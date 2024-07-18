@@ -191,4 +191,35 @@ fruits
 fruits['가격'].mean()
 fruits['판매량'].mean()
 
-pd.read_
+df_exam=pd.read_excel('data/excel_exam.xlsx')
+df_exam
+
+sum(df_exam['english'])/20
+sum(df_exam['science'])/20
+
+df_exam.shape
+df_exam.size
+len(df_exam)
+
+df_exam['math']
+df_exam['english']
+df_exam['science']
+df_exam['total']=df_exam['math']+df_exam['english']+df_exam['science']
+df_exam['mean']=df_exam['total']/3
+df_exam
+
+df_exam[(df_exam['math']>50)&(df_exam['english']>50)]
+
+mean_math=df_exam['math'].mean()
+mean_eng=df_exam['english'].mean()
+
+df_exam[(df_exam['math']>mean_math)&(df_exam['english']<mean_eng)]
+df_nc3=df_exam[df_exam['nclass']==3]
+df_nc3[['math','english','science']]
+df_nc3
+
+df_exam[0:10:2]
+
+df_exam.sort_values('math',ascending=False)
+
+#84p 115p 130p
