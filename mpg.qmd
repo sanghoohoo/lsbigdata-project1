@@ -1,0 +1,55 @@
+---
+title: "seaborn과 plotly를 사용한 데이터 시각화"
+format: html
+editor: visual
+jupyter: python3
+---
+
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+mpg=pd.read_csv('data/mpg.csv')
+```
+
+## barplot 막대그래프
+
+```{python}
+df_mpg_2=mpg.groupby('drv', as_index=False)\
+    .agg(count_drv=('drv','count'))
+df_mpg_2
+sns.barplot(data=df_mpg_2.sort_values('count_drv',ascending= False),
+    x='drv', y='count_drv', hue='drv')
+plt.show()
+plt.clf()
+```
+
+## countplot 막대그래프
+
+```{python}
+sns.countplot(data=mpg, x='drv', hue='drv')
+plt.show()
+plt.clf()
+
+```
+
+## 
+
+## seaborn 산점도
+
+```{python}
+sns.scatterplot(data=mpg,
+                x='displ', y='hwy', hue='drv')
+plt.show()
+plt.clf()
+```
+
+## plotly 산점도
+
+```{python}
+px.scatter(data_frame=mpg,
+            x='displ', y='hwy', color='drv')
+```
+
