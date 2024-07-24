@@ -54,3 +54,5 @@ Eyy=sum(y**2*pro_y)
 Eyy-Ey**2
 
 sum((y-Ey)**2 *pro_y)
+
+
