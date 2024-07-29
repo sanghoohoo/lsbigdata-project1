@@ -39,26 +39,3 @@ sub_df["SalePrice"] = house_test["SalePrice"]
 sub_df
 
 #sub_df.to_csv("./data/houseprice/sample_submission2.csv", index=False)
-train['LotArea']
-train['BldgType']
-
-##
-house_mean2=train.groupby(["LotArea", "BldgType"],as_index=False) \
-                      .agg(mean = ("SalePrice", "mean"))
-house_mean2
-
-house_test2=test[["LotArea", "BldgType"]]
-
-house_test2=pd.merge(house_test2, house_mean2, 
-                    how="left", on=["LotArea", "BldgType"])
-
-house_test2=house_test2.rename(
-    columns={"mean": "SalePrice"}
-    )
-    
-house_test2["SalePrice"].isna().sum()
-house_test2["SalePrice"]=house_test2["SalePrice"].fillna(house_test["SalePrice"])
-sub_df["SalePrice"] = house_test2["SalePrice"]
-sub_df
-
-sub_df.to_csv("./data/houseprice/sample_submission3.csv", index=False)
