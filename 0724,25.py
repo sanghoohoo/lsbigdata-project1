@@ -61,7 +61,7 @@ a+b
 bernoulli.rvs(0.3)+bernoulli.rvs(0.3)
 binom.rvs(n=2, p=0.3, size=1)
 binom.rvs(n=30, p=0.26, size=30)
-
+    
 30*0.26
 
 import matplotlib.pyplot as plt
@@ -177,5 +177,7 @@ y= norm.pdf(k, loc=3, scale=2)
 plt.plot(k, y, color='purple')
 plt.show()
 plt.clf()
+
+
 
 
