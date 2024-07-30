@@ -147,7 +147,7 @@ sns.barplot(data=sex_income2, x='ages', y='mean_income', hue='sex')
 plt.show()
 plt.clf()
 
-#각 연령대별 성별 상위 4% 수입
+#각 연령대별 성별 상위 4% 수입 *.agg에 입력값이 두개인 함수를 사용해야 할때*
 sex_income3 = welfare.dropna(subset = 'income')\
                      .groupby(['ages', 'sex'], as_index=False)\
                      .agg(top4per_income = ('income',lambda x: np.quantile(x, q=0.96)))sex_income3
@@ -159,4 +159,4 @@ plt.clf()
 #def top_4_percentile(x):
 #    return np.quantile(x, 0.96)
 #custom_top4per_income = welfare.groupby(['ages', 'sex'], as_index=False)\
-                               .agg(top4per_income=('income', top_4_percentile))
+#                               .agg(top4per_income=('income', top_4_percentile))
