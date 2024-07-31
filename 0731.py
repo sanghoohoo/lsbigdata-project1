@@ -74,7 +74,7 @@ plt.clf()
 from scipy.stats import t
 
 t_values=np.linspace(-4,4,100)
-pdf_values= t.pdf(t_values, df=50)
+pdf_values= t.pdf(t_values, df=5)
 plt.plot(t_values, pdf_values, color='red', linewidth=2)
 
 #표준정규분포 겹치기
