@@ -150,8 +150,9 @@ plt.clf()
 #각 연령대별 성별 상위 4% 수입 *.agg에 입력값이 두개인 함수를 사용해야 할때*
 sex_income3 = welfare.dropna(subset = 'income')\
                      .groupby(['ages', 'sex'], as_index=False)\
-                     .agg(top4per_income = ('income',lambda x: np.quantile(x, q=0.96)))sex_income3
-sns.barplot(data=sex_income3, x='ages', y='top4per_income', hue='ages')
+                     .agg(top4per_income = ('income',lambda x: np.quantile(x, q=0.96)))
+sex_income3
+sns.barplot(data=sex_income3, x='ages', y='top4per_income', hue='sex')
 plt.show()
 plt.clf()
 
@@ -160,3 +161,53 @@ plt.clf()
 #    return np.quantile(x, 0.96)
 #custom_top4per_income = welfare.groupby(['ages', 'sex'], as_index=False)\
 #                               .agg(top4per_income=('income', top_4_percentile))
+
+#참고
+#welfare.dropna(subset = 'income')\
+#       .groupby('sex', as_index=False)[['income']]\
+#       .agg(['mean','std'])
+
+welfare['code_job'].dtypes
+welfare['code_job'].value_counts()
+
+list_job=pd.read_excel('data/Koweps_Codebook_2019.xlsx', sheet_name='직종코드')
+list_job.head()
+
+welfare=welfare.merge(list_job, how='left', on='code_job')
+
+welfare.dropna(subset='code_job')[['code_job','job']].head()
+
+job_income=welfare.dropna(subset=['job','income'])\
+                  .groupby('job', as_index = False)\
+                  .agg(mean_income = ('income','mean'))
+job_income.head()
+
+top10 = job_income.sort_values('mean_income',ascending=False).head(10)
+top10
+
+import matplotlib.pyplot as plt
+plt.rcParams.update({'font.family':'Malgun Gothic'})
+sns.barplot(data=top10, y='job', x='mean_income', hue='job')
+plt.yticks(size=5)
+plt.tight_layout()
+plt.show()
+plt.clf()
+
+bottom10 = job_income.sort_values('mean_income').head(10)
+bottom10
+sns.barplot(data = bottom10, y = 'job', x = 'mean_income')\
+   .set(xlim = [0,800])
+plt.show()
+
+
+plt.clf()
+#
+welfare['marriage_type']
+df=welfare.query('marriage_type!=5')\
+        .groupby('religion', as_index = False)\
+        ['marriage_type']\
+        .value_counts(normalize=True)
+df
+df.query('marriage_type==1')\
+    .assign(proportion=df['proportion']*100)\
+    .round(1)
