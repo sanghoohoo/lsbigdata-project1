@@ -45,9 +45,14 @@ SalePrice_vals = intercept + slope_grlivarea * GrLivArea_vals + slope_garagearea
 ax.plot_surface(GrLivArea_vals, GarageArea_vals, SalePrice_vals, color='red', alpha=0.5)
 
 # 축 라벨
-ax.set_xlabel('GrLivArea')
-ax.set_ylabel('GarageArea')
-ax.set_zlabel('SalePrice')
+ax.set_xlabel('GrLivArea', size=8)
+ax.set_ylabel('GarageArea', size=8)
+ax.set_zlabel('SalePrice', size=8)
+
+# 축 눈금 설정
+ax.xaxis.set_tick_params(labelsize=5)
+ax.yaxis.set_tick_params(labelsize=5)
+ax.zaxis.set_tick_params(labelsize=5)
 
 plt.legend()
 plt.show()
