@@ -36,7 +36,7 @@ house_test
 
 sub_df=pd.read_csv("./data/houseprice/sample_submission.csv")
 sub_df['SalePrice'] = house_test['SalePrice']
-sub_df.to_csv("data/houseprice/sample_submission5.csv", index = False)
+#sub_df.to_csv("data/houseprice/sample_submission5.csv", index = False)
 
 a=12
 b=170
@@ -48,6 +48,7 @@ np.abs(y - y_hat).sum()
 
 
 ## 선형회귀 사용해서 구하기
+from sklearn.linear_model import LinearRegression
 
 x = house_train[['BedroomAbvGr']]
 y = house_train['SalePrice']/1000
@@ -79,3 +80,13 @@ plt.show()
 plt.clf()
 
 #abs값으로 했을 때 a=16 b=117
+
+
+test_x = np.array(house_test['BedroomAbvGr']).reshape(-1,1)
+test_x
+
+pred_y = model.predict(test_x) # test 셋에 대한 집값
+pred_y
+
+sub_df['SalePrice'] = pred_y*1000
+sub_df.to_csv("data/houseprice/sample_submission6.csv", index = False)
