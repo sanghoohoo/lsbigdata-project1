@@ -105,3 +105,5 @@ x_bar - t.ppf(0.975, df=n-1) * np.std(x, ddof=1)/np.sqrt(n)
 #모분산(3^2)을 알 때:모평균에 대한 95% 신뢰구간을 구해보자
 x_bar + norm.ppf(0.975, loc=0, scale=1) * 3/np.sqrt(n)
 x_bar - norm.ppf(0.975, loc=0, scale=1) * 3/np.sqrt(n)
+
+
