@@ -1,0 +1,77 @@
+---
+title: "팔머펭귄 대쉬보드"
+author: "Sanghoo Ahn"
+format: 
+  dashboard:
+    logo: img/penguins.png
+    nav-buttons:
+      - reddit
+      - icon: github
+        href: https://github.com/sanghoohoo/lsbigdata-project1
+    scrolling: true
+---
+# Page1
+
+## Row {height=70%}
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from palmerpenguins import load_penguins
+
+penguins = load_penguins()
+# penguins.head()
+
+fig = px.scatter(
+    penguins,
+    x="bill_length_mm",
+    y="bill_depth_mm",
+    color="species",
+    # trendline = 'ols',
+)
+
+fig
+```
+
+## Row {.tabset}
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from palmerpenguins import load_penguins
+
+penguins = load_penguins()
+# penguins.head()
+
+fig = px.scatter(
+    penguins,
+    x="bill_length_mm",
+    y="bill_depth_mm",
+    color="species",
+    # trendline = 'ols',
+)
+
+fig
+```
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from palmerpenguins import load_penguins
+
+penguins = load_penguins()
+# penguins.head()
+
+fig = px.scatter(
+    penguins,
+    x="bill_length_mm",
+    y="bill_depth_mm",
+    color="species",
+    # trendline = 'ols',
+)
+
+fig
+```

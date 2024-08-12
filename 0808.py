@@ -7,6 +7,10 @@ df_covid19_100 = pd.read_csv('data/plotly/df_covid19_100.csv')
 df_covid19_100
 df_covid19_100.info()
 
+# import os
+# os.getcwd()
+# 주석 ctrl + /
+
 margins_P = {'l':25, 'r':25, 't':50, 'b':25}
 fig = go.Figure(
     data = [{
