@@ -217,4 +217,10 @@ regline_y=model.predict(x)
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-sns.scatterplot(x=x['bill_length_mm'], y=regline_y)
+sns.scatterplot(x=penguins["bill_length_mm"], y=y, 
+                hue=penguins["species"], palette="deep",
+                legend=False)
+sns.scatterplot(x=penguins["bill_length_mm"], y=regline_y,
+                color="black")
+plt.show()
+plt.clf()
