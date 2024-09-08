@@ -38,12 +38,26 @@ mat_a
 
 from scipy.stats import chi2_contingency
 
-chi2, p, df, expected = chi2_contingency(mat_a)
+chi2, p, df, expected = chi2_contingency(mat_a, correction=False)
 chi2.round(3) # 검정통계량
-p.round(4) # p-value
+p # p-value
+((mat_a-expected)**2/expected).sum()
 
 # 유의수준 0.05 이라면,
 # p값이 0.05보다 작으므로, 귀무가설을 기각
 # 즉, 두 변수는 독립 아니다
+from scipy.stats import chi2
+p=1-chi2.cdf(15.556, df=1)
+p
 
-1-chi2.cdf(12.6, df=1)
+
+# 귀무가설 : 두 도시에서의 음료 선호도가 동일하다.
+# 대립가설 : 두 도시에서의 음료 선호도가 동일하지 않다.
+mat_b=np.array([50,30,20,45,35,20]).reshape(2,3)
+mat_b
+
+chi2, p, df, expected = chi2_contingency(mat_b, correction=False)
+chi2.round(3) # 검정통계량
+p.round(4) # p-value
+expected
+# 귀무가설 기각하지 못함
