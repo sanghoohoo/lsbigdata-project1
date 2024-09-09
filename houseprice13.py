@@ -130,4 +130,4 @@ sub_df["SalePrice"] = pred_y
 sub_df
 
 # csv 파일로 내보내기
-sub_df.to_csv("./data/houseprice/sample_submission10.csv", index=False)
+sub_df.to_csv("./data/houseprice/sample_submission_10.csv", index=False)
