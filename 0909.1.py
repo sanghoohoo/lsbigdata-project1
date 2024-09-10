@@ -74,8 +74,8 @@ df_y=df["REMISS"]
 y_pred = model.predict(df_x).round().astype(int)
 
 from sklearn.metrics import confusion_matrix
-conf_mat=confusion_matrix(y_true=np.array(df_y), 
-                          y_pred=np.array(y_pred),
+conf_mat=confusion_matrix(y_true=df_y, 
+                          y_pred=y_pred,
                           labels=[1, 0])
 conf_mat
 
