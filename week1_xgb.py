@@ -41,7 +41,7 @@ X_train_resampled, y_train_resampled = smote.fit_resample(X_train_poly, y_train)
 
 # XGBoost 분류기
 xgb_clf = XGBClassifier(
-    # random_state=42, 
+random_state=42, 
     use_label_encoder=False, 
     eval_metric='logloss', 
     # scale_pos_weight=scale_pos_weight  # scale_pos_weight 설정
